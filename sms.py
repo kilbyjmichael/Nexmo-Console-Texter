@@ -3,6 +3,8 @@ import requests
 import argparse
 import json
 
+NEXMO_NUMBER = 'YOUR_NEXMO_NUMBER'
+
 def send_msg(to,from_num,msg):
     payload = {
         'api_key': 'API_KEY',
@@ -20,7 +22,7 @@ def main():
     parser.add_argument('msg', metavar='m', type=str, help='the message you wish to send')
     args = parser.parse_args()
     
-    resp = json.loads(send_msg(args.to,'YOUR_NEXMO_NUMBER',args.msg))
+    resp = json.loads(send_msg(args.to, NEXMO_NUMBER ,args.msg))
     
     if(resp['messages'][0]['status'] == '0'):
         print("Txt Msg sent to " + args.to + " successfully.")
